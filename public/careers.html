@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Careers | Lynn’s Caregiving Services</title>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <meta name="description" content="Apply to join Lynn’s Caregiving Services as a Personal Support Worker. We look for dependable, respectful, and compassionate caregivers.">
+  <link rel="canonical" href="https://www.your-domain.ca/careers.html">
+  <meta property="og:title" content="Join a Care Team Built Around Compassion and Professionalism">
+  <meta property="og:description" content="Lynn’s Caregiving Services welcomes Personal Support Workers who value dignity, teamwork, and client-centered care.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.your-domain.ca/careers.html">
+  <meta property="og:image" content="https://www.your-domain.ca/images/about.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="Lynn’s Caregiving Services">
+        <img class="logo__image" src="images/logo.png" width="320" height="180" alt="Lynn’s Caregiving Services">
+      </a>
+      <a class="header-phone header-phone--mobile" href="tel:+16478299339">Call (647) 829-9339</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="why-choose-us.html">Why Choose Us</a></li>
+          <li><a href="careers.html" aria-current="page">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a class="btn btn-primary" href="request-care.html">Request Care</a></li>
+          <li><a class="header-phone header-phone--desktop" href="tel:+16478299339">Call (647) 829-9339</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="kicker">Careers</p>
+        <h1>Join a Care Team Built Around Compassion and Professionalism</h1>
+        <p class="lede">Lynn’s Caregiving Services is interested in Personal Support Workers who are dependable, respectful, compassionate, and committed to providing client-centered care.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container request-layout">
+        <form class="form" id="application-form" action="/api/applications" method="post" data-success-redirect="thank-you-application.html" novalidate>
+          <div class="form-section">
+            <h2>PSW job application</h2>
+            <p>If you value dignity, teamwork, clear communication, and professional caregiving, we welcome you to submit an application.</p>
+            <div class="form-row form-row--2">
+              <div class="form-field">
+                <label for="firstName">First name <span class="required">*</span></label>
+                <input id="firstName" name="firstName" type="text" autocomplete="given-name" maxlength="100" required>
+                <p class="field-error"></p>
+              </div>
+              <div class="form-field">
+                <label for="lastName">Last name <span class="required">*</span></label>
+                <input id="lastName" name="lastName" type="text" autocomplete="family-name" maxlength="100" required>
+                <p class="field-error"></p>
+              </div>
+            </div>
+            <div class="form-row form-row--2">
+              <div class="form-field">
+                <label for="email">Email address <span class="required">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" maxlength="255" required>
+                <p class="field-error"></p>
+              </div>
+              <div class="form-field">
+                <label for="phone">Contact number <span class="required">*</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="50" required>
+                <p class="field-error"></p>
+              </div>
+            </div>
+            <fieldset class="form-fieldset form-field">
+              <legend>Position <span class="required">*</span></legend>
+              <div class="choice-list">
+                <label class="choice"><input type="radio" name="position" value="full_time"> Full-time</label>
+                <label class="choice"><input type="radio" name="position" value="part_time"> Part-time</label>
+              </div>
+              <p class="field-error"></p>
+            </fieldset>
+            <fieldset class="form-fieldset form-field">
+              <legend>Availability</legend>
+              <div class="choice-list">
+                <label class="choice"><input type="checkbox" name="availability" value="weekdays"> Weekdays</label>
+                <label class="choice"><input type="checkbox" name="availability" value="weekends"> Weekends</label>
+              </div>
+            </fieldset>
+            <fieldset class="form-fieldset form-field">
+              <legend>Preferred shifts</legend>
+              <div class="choice-list">
+                <label class="choice"><input type="checkbox" name="preferredShifts" value="morning"> Morning</label>
+                <label class="choice"><input type="checkbox" name="preferredShifts" value="evening"> Evening</label>
+                <label class="choice"><input type="checkbox" name="preferredShifts" value="night"> Night shift</label>
+              </div>
+            </fieldset>
+            <div class="form-field">
+              <label for="experience">Relevant experience</label>
+              <textarea id="experience" name="experience" maxlength="2000"></textarea>
+            </div>
+            <fieldset class="form-fieldset form-field">
+              <legend class="visually-hidden">Privacy acknowledgement</legend>
+              <label class="choice">
+                <input id="privacyAcknowledged" name="privacyAcknowledged" type="checkbox" value="yes" required>
+                <span>I understand that this application will be used to contact me about employment. <span class="required">*</span></span>
+              </label>
+              <p class="field-error"></p>
+            </fieldset>
+          </div>
+
+          <div class="form-status" role="status" aria-live="polite"></div>
+          <button class="btn btn-primary" type="submit">Submit Application</button>
+          <p class="form-note">Applicants should be prepared to provide information related to qualifications, background screening, and valid CPR and First Aid certification as part of the hiring process.</p>
+        </form>
+
+        <aside class="side-card">
+          <h2>What we look for</h2>
+          <ul>
+            <li>Dependable, respectful, and compassionate caregivers</li>
+            <li>A commitment to client-centered care</li>
+            <li>Clear communication and teamwork</li>
+            <li>Willingness to complete background screening</li>
+            <li>Valid CPR and First Aid certification, or the ability to obtain it</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img class="logo__image" src="images/logo.png" width="320" height="180" alt="Lynn’s Caregiving Services">
+          <p style="margin-top:0.25rem;max-width:28rem;color:#c5cdd8;">Compassionate, trustworthy, reliable, and professional non-medical in-home support.</p>
+        </div>
+        <div>
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="why-choose-us.html">Why Choose Us</a></li>
+            <li><a href="request-care.html">Request Care</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="tel:+16478299339">(647) 829-9339</a></li>
+            <li><a href="mailto:lynperalta61@yahoo.com">lynperalta61@yahoo.com</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+          <address style="margin-top:1rem;">703-5950 Bathurst St<br>North York, ON M2R 1Y9</address>
+        </div>
+      </div>
+      <p class="site-footer__meta">&copy; <span data-year></span> Lynn’s Caregiving Services. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/forms.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

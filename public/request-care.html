@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request Care | Lynn’s Caregiving Services</title>
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <meta name="description" content="Tell Lynn’s Caregiving Services about your care needs. Complete the client care application or call (647) 829-9339.">
+  <link rel="canonical" href="https://www.your-domain.ca/request-care.html">
+  <meta property="og:title" content="Tell Us About Your Care Needs">
+  <meta property="og:description" content="You do not need to have every detail figured out. Share what you know and we will begin the conversation from there.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.your-domain.ca/request-care.html">
+  <meta property="og:image" content="https://www.your-domain.ca/images/hero.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="Lynn’s Caregiving Services">
+        <img class="logo__image" src="images/logo.png" width="320" height="180" alt="Lynn’s Caregiving Services">
+      </a>
+      <a class="header-phone header-phone--mobile" href="tel:+16478299339">Call (647) 829-9339</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="why-choose-us.html">Why Choose Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a class="btn btn-primary" href="request-care.html" aria-current="page">Request Care</a></li>
+          <li><a class="header-phone header-phone--desktop" href="tel:+16478299339">Call (647) 829-9339</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="kicker">Client care application</p>
+        <h1>Tell Us About Your Care Needs</h1>
+        <p class="lede">You do not need to have every detail figured out before contacting us. Share the information you know, and we can begin the conversation from there.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container request-layout">
+        <form class="form" id="inquiry-form" action="/api/inquiries" method="post" data-success-redirect="thank-you.html" novalidate>
+          <div class="form-section">
+            <h2>Your contact information</h2>
+            <p>Please complete the form below and a member of Lynn’s Caregiving Services can follow up to discuss your needs.</p>
+            <div class="form-row form-row--2">
+              <div class="form-field">
+                <label for="firstName">First name <span class="required">*</span></label>
+                <input id="firstName" name="firstName" type="text" autocomplete="given-name" maxlength="100" required>
+                <p class="field-error"></p>
+              </div>
+              <div class="form-field">
+                <label for="lastName">Last name <span class="required">*</span></label>
+                <input id="lastName" name="lastName" type="text" autocomplete="family-name" maxlength="100" required>
+                <p class="field-error"></p>
+              </div>
+            </div>
+            <div class="form-row form-row--2">
+              <div class="form-field">
+                <label for="phone">Phone number <span class="required">*</span></label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="50" required>
+                <p class="field-error"></p>
+              </div>
+              <div class="form-field">
+                <label for="email">Email address <span class="required">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" maxlength="255" required>
+                <p class="field-error"></p>
+              </div>
+            </div>
+            <fieldset class="form-fieldset form-field">
+              <legend>Preferred contact method</legend>
+              <div class="choice-list">
+                <label class="choice"><input type="radio" name="preferredContactMethod" value="phone" checked> Phone</label>
+                <label class="choice"><input type="radio" name="preferredContactMethod" value="email"> Email</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-section">
+            <h2>Care needs</h2>
+            <p>Please do not include diagnoses, health card numbers, or other sensitive medical details.</p>
+            <fieldset class="form-fieldset form-field">
+              <legend>Who needs care? <span class="required">*</span></legend>
+              <div class="choice-list">
+                <label class="choice"><input type="radio" name="relationshipToClient" value="myself"> Self</label>
+                <label class="choice"><input type="radio" name="relationshipToClient" value="parent"> Parent</label>
+                <label class="choice"><input type="radio" name="relationshipToClient" value="spouse"> Spouse</label>
+                <label class="choice"><input type="radio" name="relationshipToClient" value="family_member"> Family member</label>
+                <label class="choice"><input type="radio" name="relationshipToClient" value="other"> Other</label>
+              </div>
+              <p class="field-error"></p>
+            </fieldset>
+            <fieldset class="form-fieldset form-field">
+              <legend>Type of support needed <span class="required">*</span></legend>
+              <div class="choice-list">
+                <label class="choice"><input type="checkbox" name="supportTypes" value="personal_care"> Personal care</label>
+                <label class="choice"><input type="checkbox" name="supportTypes" value="mobility"> Mobility</label>
+                <label class="choice"><input type="checkbox" name="supportTypes" value="meals"> Meals</label>
+                <label class="choice"><input type="checkbox" name="supportTypes" value="companionship"> Companionship</label>
+                <label class="choice"><input type="checkbox" name="supportTypes" value="respite"> Respite</label>
+                <label class="choice"><input type="checkbox" name="supportTypes" value="other"> Other</label>
+              </div>
+              <p class="field-error"></p>
+            </fieldset>
+            <fieldset class="form-fieldset form-field">
+              <legend>Preferred schedule</legend>
+              <div class="choice-list">
+                <label class="choice"><input type="checkbox" name="preferredSchedule" value="weekdays"> Weekdays</label>
+                <label class="choice"><input type="checkbox" name="preferredSchedule" value="weekends"> Weekends</label>
+                <label class="choice"><input type="checkbox" name="preferredSchedule" value="morning"> Morning</label>
+                <label class="choice"><input type="checkbox" name="preferredSchedule" value="evening"> Evening</label>
+                <label class="choice"><input type="checkbox" name="preferredSchedule" value="night"> Night</label>
+              </div>
+            </fieldset>
+            <div class="form-field">
+              <label for="desiredStartDate">Preferred start date</label>
+              <input id="desiredStartDate" name="desiredStartDate" type="date">
+              <p class="field-error"></p>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Brief message / needs assessment</h2>
+            <div class="form-field">
+              <label for="additionalInformation">Tell us about the client, current needs, routines, or concerns.</label>
+              <textarea id="additionalInformation" name="additionalInformation" maxlength="2000"></textarea>
+            </div>
+            <fieldset class="form-fieldset form-field">
+              <legend class="visually-hidden">Privacy acknowledgement</legend>
+              <label class="choice">
+                <input id="privacyAcknowledged" name="privacyAcknowledged" type="checkbox" value="yes" required>
+                <span>I understand that the information I submit will be used to contact me regarding my care request. <span class="required">*</span></span>
+              </label>
+              <p class="field-error"></p>
+            </fieldset>
+          </div>
+
+          <div class="form-status" role="status" aria-live="polite"></div>
+          <button class="btn btn-primary" type="submit">Request Care</button>
+          <p class="form-note">Submitting this form does not commit you to purchasing services.</p>
+        </form>
+
+        <aside class="side-card">
+          <h2>Prefer to speak with someone?</h2>
+          <p>Call <a href="tel:+16478299339">(647) 829-9339</a> for direct assistance. Phone support is available around the clock.</p>
+          <div class="btn-group">
+            <a class="btn btn-secondary" href="tel:+16478299339">Call Now</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img class="logo__image" src="images/logo.png" width="320" height="180" alt="Lynn’s Caregiving Services">
+          <p style="margin-top:0.25rem;max-width:28rem;color:#c5cdd8;">Compassionate, trustworthy, reliable, and professional non-medical in-home support.</p>
+        </div>
+        <div>
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="why-choose-us.html">Why Choose Us</a></li>
+            <li><a href="request-care.html">Request Care</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="tel:+16478299339">(647) 829-9339</a></li>
+            <li><a href="mailto:lynperalta61@yahoo.com">lynperalta61@yahoo.com</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+          <address style="margin-top:1rem;">703-5950 Bathurst St<br>North York, ON M2R 1Y9</address>
+        </div>
+      </div>
+      <p class="site-footer__meta">&copy; <span data-year></span> Lynn’s Caregiving Services. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/forms.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

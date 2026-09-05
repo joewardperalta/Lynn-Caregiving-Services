@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /thank-you.html
+Disallow: /thank-you-application.html
+
+Sitemap: https://www.your-domain.ca/sitemap.xml

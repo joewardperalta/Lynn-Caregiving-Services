@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace https://www.your-domain.ca with the live website address before launch. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.your-domain.ca/</loc></url>
+  <url><loc>https://www.your-domain.ca/about.html</loc></url>
+  <url><loc>https://www.your-domain.ca/services.html</loc></url>
+  <url><loc>https://www.your-domain.ca/why-choose-us.html</loc></url>
+  <url><loc>https://www.your-domain.ca/request-care.html</loc></url>
+  <url><loc>https://www.your-domain.ca/careers.html</loc></url>
+  <url><loc>https://www.your-domain.ca/contact.html</loc></url>
+  <url><loc>https://www.your-domain.ca/privacy.html</loc></url>
+</urlset>
