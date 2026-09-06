@@ -1,177 +1,218 @@
-# At Home Personal Support
+# Lynn’s Caregiving Services
 
-A complete multi-page website for a small Canadian business that provides Personal Support Worker (PSW) services. The site is built for families, caregivers, seniors’ families, and employers who want to request reliable personal support at home.
+Multi-page website for **Lynn’s Caregiving Services**, a Canadian non-medical in-home care business. Families can request care online, browse services, learn about the company, and contact the team. Personal Support Workers can apply for employment through the careers form.
 
-The primary conversion action is **Request a Personal Support Worker**. Submitted requests are validated and emailed to the business owner. A database is not required.
+**Live site:** [https://www.lynncaregiving.com](https://www.lynncaregiving.com)
 
-> Replace the working name **At Home Personal Support**, contact placeholders, owner biography, service area, and `your-domain.ca` references before launch.
+## Features
 
-## Technology stack
+- Responsive marketing pages (Home, About, Services, Why Choose Us, Careers, Contact, Privacy)
+- Primary conversion flow: **Request Care**
+- Secondary conversion: phone and contact form
+- Careers / PSW job application form
+- Server-side form validation and sanitization
+- Transactional email notifications via SMTP (Resend recommended)
+- Optional confirmation email for care requests
+- Rate-limited public API endpoints
+- Security headers with Helmet
+- SEO basics: sitemap, robots.txt, Open Graph metadata
 
-- HTML5, CSS3, and vanilla JavaScript
-- Node.js and Express.js
-- Nodemailer for transactional email
-- `dotenv`, `helmet`, `express-rate-limit`, and `express-validator`
+## Tech stack
 
-No React, Next.js, Vue, Angular, Tailwind, or Bootstrap. PostgreSQL is optional and not used by the current form flow.
+| Layer | Technology |
+| --- | --- |
+| Frontend | HTML5, CSS3, vanilla JavaScript |
+| Backend | Node.js 18+, Express.js |
+| Email | Nodemailer (SMTP) |
+| Validation | express-validator |
+| Security | helmet, express-rate-limit, dotenv |
 
-## Folder structure
+No React, Next.js, Vue, Angular, Tailwind, or Bootstrap. A database is **not required** for the current form flow. Submitted forms are emailed to the business owner.
+
+## Prerequisites
+
+- [Node.js 18+](https://nodejs.org/)
+- npm (included with Node.js)
+- SMTP credentials (Resend, or another provider)
+
+## Quick start
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Create environment file
+cp .env.example .env
+# Windows:
+# copy .env.example .env
+
+# 3. Edit .env with your SMTP and owner email settings
+
+# 4. Start the development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+| Script | Description |
+| --- | --- |
+| `npm run dev` | Start server with file watching (`node --watch`) |
+| `npm start` | Start server for production-style runs |
+
+Pages render without email configured. Form submissions require valid SMTP settings in `.env`.
+
+## Project structure
 
 ```text
 .
-├── public/                 Static website files
+├── public/                     Static site assets
 │   ├── index.html
 │   ├── about.html
 │   ├── services.html
-│   ├── how-it-works.html
-│   ├── request-psw.html
+│   ├── why-choose-us.html
+│   ├── request-care.html
+│   ├── careers.html
 │   ├── contact.html
 │   ├── privacy.html
 │   ├── thank-you.html
+│   ├── thank-you-application.html
 │   ├── robots.txt
 │   ├── sitemap.xml
 │   ├── css/
 │   ├── js/
 │   └── images/
 ├── server/
-│   ├── controllers/
-│   ├── routes/
-│   ├── services/
-│   ├── middleware/
-│   └── db/
+│   ├── controllers/            Request handlers
+│   ├── routes/                 API route definitions
+│   ├── services/               Email delivery
+│   ├── middleware/             Validation and error handling
+│   └── db/                     Optional PostgreSQL helper (unused by forms)
 ├── database/
-│   └── schema.sql
+│   └── schema.sql              Optional schema reference
 ├── .env.example
 ├── .gitignore
-├── server.js
+├── server.js                   Application entry point
 ├── package.json
 └── README.md
 ```
 
-## Installation
-
-1. Install [Node.js 18+](https://nodejs.org/).
-2. In the project folder, install dependencies:
-
-```bash
-npm install
-```
-
-3. Copy the environment file and edit the values:
-
-```bash
-copy .env.example .env
-```
-
-On macOS or Linux, use `cp .env.example .env`.
-
 ## Environment variables
 
-| Variable | Purpose |
-| --- | --- |
-| `PORT` | Web server port (default `3000`) |
-| `NODE_ENV` | `development` or `production` |
-| `OWNER_EMAIL` | Where new requests are sent |
-| `FROM_EMAIL` | From address for outgoing mail |
-| `EMAIL_HOST` | SMTP host |
-| `EMAIL_PORT` | SMTP port, usually `587` |
-| `EMAIL_SECURE` | `true` for port 465, otherwise `false` |
-| `EMAIL_USER` | SMTP username |
-| `EMAIL_PASSWORD` | SMTP password |
-| `SEND_CONFIRMATION_EMAIL` | `true` to email the person who submitted the request |
-| `SITE_URL` | Public site URL, used in documentation and sitemap |
+Copy `.env.example` to `.env` and configure:
 
-Never commit the `.env` file. Email credentials stay on the server only.
+| Variable | Required | Description |
+| --- | --- | --- |
+| `PORT` | No | HTTP port (default `3000`) |
+| `NODE_ENV` | No | `development` or `production` |
+| `OWNER_EMAIL` | Yes (forms) | Inbox that receives form notifications |
+| `FROM_EMAIL` | Yes (forms) | Sender address for outgoing mail |
+| `EMAIL_HOST` | Yes (forms) | SMTP host (e.g. `smtp.resend.com`) |
+| `EMAIL_PORT` | No | SMTP port (default `587`) |
+| `EMAIL_SECURE` | No | `true` for port 465; otherwise `false` |
+| `EMAIL_USER` | Yes (forms) | SMTP username (Resend: `resend`) |
+| `EMAIL_PASSWORD` | Yes (forms) | SMTP password / API key |
+| `SEND_CONFIRMATION_EMAIL` | No | `true` to email care-request submitters |
+| `SITE_URL` | No | Public site URL |
 
-## Running locally
+Never commit `.env`. Keep credentials on the server only.
 
-```bash
-npm install
-npm run dev
+### Example Resend configuration
+
+```env
+OWNER_EMAIL=lynncaregiving@gmail.com
+FROM_EMAIL=requests@lynncaregiving.com
+EMAIL_HOST=smtp.resend.com
+EMAIL_PORT=587
+EMAIL_SECURE=false
+EMAIL_USER=resend
+EMAIL_PASSWORD=re_xxxxxxxxx
+SEND_CONFIRMATION_EMAIL=true
+SITE_URL=https://www.lynncaregiving.com
 ```
 
-Then open [http://localhost:3000](http://localhost:3000).
+## Email setup (Resend)
 
-`npm start` runs the same server without file watching.
+### Testing (unverified domain)
 
-Pages load without email configured. Form submissions require working SMTP settings in `.env`.
+1. Create an API key in Resend.
+2. Set `FROM_EMAIL=onboarding@resend.dev`.
+3. Set `OWNER_EMAIL` to the email on your Resend account.
+4. Set `SEND_CONFIRMATION_EMAIL=false`.
 
-## Email configuration
+Without a verified domain, Resend only delivers to your account email.
 
-When a request is submitted, the server emails the owner with:
+### Production (verified domain)
 
-- Contact information
-- Client information
-- Selected support types and schedule
-- Additional comments
-- Date and time submitted
+1. Add and verify your domain at [resend.com/domains](https://resend.com/domains).
+2. Set `FROM_EMAIL` to an address on that domain (for example `requests@lynncaregiving.com`).
+3. Set `OWNER_EMAIL` to the business inbox (for example `lynncaregiving@gmail.com`).
+4. Optionally enable `SEND_CONFIRMATION_EMAIL=true`.
 
-User-entered HTML is stripped and escaped so it cannot render in the email.
+If SMTP is not configured, form submissions return an error and the email body is written to the server log for local debugging.
 
-Common SMTP options:
+## API endpoints
 
-- Gmail or Google Workspace app password
-- Microsoft 365
-- A transactional provider such as [Resend SMTP](https://resend.com/docs/send-with-smtp), Mailgun, or Postmark
+All public form endpoints are rate limited.
 
-### Resend testing vs production
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| `POST` | `/api/inquiries` | Care request (Request Care form) |
+| `POST` | `/api/contact` | General contact message |
+| `POST` | `/api/applications` | PSW job application |
 
-With Resend’s free/testing setup (`FROM_EMAIL=onboarding@resend.dev`):
+### Request Care flow
 
-- You can only send to the email address on your Resend account
-- Set `OWNER_EMAIL` to that same address while testing
-- Set `SEND_CONFIRMATION_EMAIL=false` (visitor confirmation emails will be rejected)
-
-For production:
-
-1. Verify your domain at [resend.com/domains](https://resend.com/domains)
-2. Set `FROM_EMAIL` to an address on that domain (for example `requests@your-domain.ca`)
-3. Set `OWNER_EMAIL` to the business inbox (for example Lynn’s email)
-4. Optionally turn `SEND_CONFIRMATION_EMAIL` back on
-
-If SMTP is not configured, the form returns an error and the email body is written to the server log so you can confirm the content during local development.
-
-## How the inquiry form works
-
-1. The visitor completes `request-psw.html`.
-2. Vanilla JavaScript validates required fields, then `POST`s JSON to `/api/inquiries`.
+1. Visitor completes `request-care.html`.
+2. Client-side JavaScript validates required fields and `POST`s JSON to `/api/inquiries`.
 3. Express validates and sanitizes the payload again.
-4. Nodemailer emails the business owner, and optionally sends a confirmation email.
-5. The browser redirects to `thank-you.html`.
+4. Nodemailer emails the owner and optionally sends a confirmation.
+5. Browser redirects to `thank-you.html`.
 
-The contact page uses `/api/contact` in the same way, without a redirect.
+Contact and careers forms follow the same validation/email pattern. Careers redirects to `thank-you-application.html`.
 
-The submit button is disabled while a request is in progress to reduce duplicate submissions. Public forms are rate limited.
+User-entered HTML is stripped and escaped before inclusion in emails.
 
-## Production deployment
+## Security
 
-1. Replace placeholders: business name, phone, email, service area, hours, owner profile, privacy policy, sitemap domain, and Open Graph URLs.
-2. Use a process manager such as systemd or PM2: `npm start`.
-3. Put the app behind HTTPS (Caddy, Nginx, or a host that terminates TLS).
-4. Set `NODE_ENV=production`.
-5. Configure SMTP credentials securely on the server.
-6. Review `public/privacy.html` with a qualified professional before presenting it as a final policy.
+- Helmet sets standard HTTP security headers
+- Rate limiting on public form `POST` routes
+- Request bodies limited to 20kb
+- Server-side validation and sanitization (frontend validation is convenience only)
+- Production API errors omit stack traces
+- Forms intentionally avoid collecting diagnoses, health card numbers, SINs, or payment details
 
-## Security notes
+## Deployment
 
-- `helmet` sets standard HTTP security headers.
-- `express-rate-limit` limits public form posts.
-- Request bodies are limited to 20kb.
-- Frontend validation is a convenience only. The server always validates again.
-- Production API errors do not include stack traces.
-- Do not ask visitors for diagnoses, health card numbers, SIN numbers, or payment details through these forms.
+1. Set production environment variables on the host (never commit secrets).
+2. Install dependencies: `npm install --omit=dev`
+3. Start with a process manager such as PM2 or systemd: `npm start`
+4. Serve behind HTTPS (Caddy, Nginx, or a platform that terminates TLS)
+5. Set `NODE_ENV=production`
+6. Confirm Resend domain verification and test each form
+7. Review `public/privacy.html` with a qualified professional if needed
 
-## Customization checklist
+## Pages
 
-- [ ] Business name and logo text
-- [ ] Phone, email, service area, and hours
-- [ ] Owner name, photo, and biography on the About page
-- [ ] FAQ answers for service area and response time
-- [ ] Privacy policy legal review
-- [ ] `robots.txt` and `sitemap.xml` live domain
-- [ ] SMTP production credentials
-- [ ] Photography if you prefer original photos
+| Page | File |
+| --- | --- |
+| Home | `public/index.html` |
+| About Us | `public/about.html` |
+| Services | `public/services.html` |
+| Why Choose Us | `public/why-choose-us.html` |
+| Request Care | `public/request-care.html` |
+| Careers | `public/careers.html` |
+| Contact | `public/contact.html` |
+| Privacy Policy | `public/privacy.html` |
+
+Redirect helpers:
+
+- `request-psw.html` → `request-care.html`
+- `how-it-works.html` → `why-choose-us.html`
+
+## License
+
+Private project. All rights reserved by Lynn’s Caregiving Services unless otherwise stated.
 
 ## Photo credits
 
-Home-care photographs are downloaded from [Pexels](https://www.pexels.com/) / [Unsplash](https://unsplash.com/) as free-to-use images. Confirm the current licence on each source if you republish them, and replace them with original photos when available.
+Home-care photographs are sourced from [Pexels](https://www.pexels.com/) / [Unsplash](https://unsplash.com/) as free-to-use images. Confirm current licence terms for each source before republication, and replace with original photography when available.
