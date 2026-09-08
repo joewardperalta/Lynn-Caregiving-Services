@@ -16,6 +16,7 @@ Multi-page website for **Lynn’s Caregiving Services**, a Canadian non-medical 
 - Rate-limited public API endpoints
 - Security headers with Helmet
 - SEO basics: sitemap, robots.txt, Open Graph metadata
+- Vercel Web Analytics
 
 ## Tech stack
 
@@ -180,6 +181,17 @@ User-entered HTML is stripped and escaped before inclusion in emails.
 - Server-side validation and sanitization (frontend validation is convenience only)
 - Production API errors omit stack traces
 - Forms intentionally avoid collecting diagnoses, health card numbers, SINs, or payment details
+
+## Vercel Web Analytics
+
+This site loads Vercel Web Analytics from `/_vercel/insights/script.js` (available after deploying on Vercel).
+
+1. In the Vercel project dashboard, open **Analytics**
+2. Click **Enable**
+3. Redeploy so the insights routes are available
+4. Confirm page views appear under **Analytics** after traffic arrives
+
+Local development will not serve `/_vercel/insights/script.js`; that is expected.
 
 ## Deployment
 
